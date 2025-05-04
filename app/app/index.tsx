@@ -50,7 +50,7 @@ const WelcomeScreen = () => {
     <SafeAreaView className={`flex-1 ${currentTheme === 'dark' ? 'bg-gray-900' : 'bg-white'}`}>
       <View className="items-center px-5 pt-10">
         <Image source={require('../assets/images/landing.png')} className="w-[120px] h-[120px] mb-6" resizeMode="contain" />
-        <Text className={`text-[28px] font-bold text-center mb-3 ${currentTheme ==='dark' ? 'text-white' : 'text-gray-900'}`}>Imaginarry</Text>
+        <Text className={`text-[28px] font-bold text-center mb-3 ${currentTheme ==='dark' ? 'text-white' : 'text-gray-900'}`}>Imaginary</Text>
         <Text className={`text-base text-center mb-10 leading-6 ${currentTheme === 'dark' ? 'text-gray-300' : 'text-gray-600'}`}>
           Transform your images with powerful AI tools - 
           Recolor, restore, fill, and remove objects with just a few taps
