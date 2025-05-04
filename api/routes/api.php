@@ -2,7 +2,28 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Auth\RegisteredUserController;
+use App\Http\Controllers\Auth\AuthenticatedSessionController;
 
-Route::middleware(['auth:sanctum'])->get('/user', function (Request $request) {
-    return $request->user();
+
+Route::middleware("guest")->group(
+    callback: function (): void {
+        Route::post('/register', [RegisteredUserController::class, 'store'])
+            ->middleware('guest')
+            ->name('register');
+
+        Route::post('/login', [AuthenticatedSessionController::class, 'store'])
+            ->middleware('guest')
+            ->name('login');
+    }
+);
+
+Route::middleware(['auth:sanctum'])
+     ->group(callback: function (): void {
+    Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])
+        ->name('logout');
+
+    Route::get('/user', function (Request $request): mixed {
+        return $request->user();
+    });
 });

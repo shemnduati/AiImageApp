@@ -23,7 +23,7 @@ const features: Feature[] = [
   {
     icon:'🍪',
     text: 'Recolor Images',
-    description: 'choose Arbitary Color'
+    description: 'Choose Arbitary Color'
   },
   {
     icon:'📷',
