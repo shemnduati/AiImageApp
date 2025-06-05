@@ -22,7 +22,7 @@ interface AuthContextType {
     signOut: () => void;
     session?: string | null;
     user?: User | null;
-    isaLoading: boolean;
+    isLoading: boolean;
     updateUser: (userData: any) => Promise<void>;
 }
 
@@ -31,7 +31,7 @@ const AuthContext = createContext<AuthContextType>({
     signOut: () => null,
     session: null,
     user: null,
-    isaLoading: false,
+    isLoading: false,
     updateUser: async () => {},
 });
 
@@ -54,7 +54,7 @@ export function SessionProvider({ children }: PropsWithChildren){
         await setUser(userData);
     };
 
-    const handleSignout = async () =>{
+    const handleSignOut = async () =>{
         try {
            if(session){
             await axiosInstance.post('/api/logout', null, {
@@ -136,7 +136,7 @@ export function SessionProvider({ children }: PropsWithChildren){
                 session,
                 user: parsedUser,
                 isLoading,
-                updateUserData: handleUpdateUser,
+                updateUser: handleUpdateUser,
             }}
         >
             {children}

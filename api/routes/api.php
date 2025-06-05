@@ -8,9 +8,9 @@ use App\Http\Controllers\Auth\AuthenticatedSessionController;
 
 Route::middleware("guest")->group(
     callback: function (): void {
-        Route::post('/register', [RegisteredUserController::class, 'store'])
+        Route::post('/signup', [RegisteredUserController::class, 'store'])
             ->middleware('guest')
-            ->name('register');
+            ->name('signup');
 
         Route::post('/login', [AuthenticatedSessionController::class, 'store'])
             ->middleware('guest')
