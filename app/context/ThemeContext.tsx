@@ -26,7 +26,7 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({
         const [theme, setThemeState] = useState<ThemeType>('system');
         const [currentTheme, setCurrentTheme] = useState<'light' | 'dark'>('dark')
 
-        // initialiize theme from storeage or default to system
+        // initialize theme from storage or default to system
 
         useEffect(() => {
             if(storedTheme) {

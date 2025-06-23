@@ -103,13 +103,13 @@ const Signup = () => {
        >
         <View className='flex-row items-center justify-center'>
           {loading && <ActivityIndicator size="small" color="#ffffff" className='mr-3' />}
-          <Text className='text-white text-center'>Singup</Text>
+          <Text className='text-white text-center'>Sing Up</Text>
         </View>
        </Button>
        <Text className={`text-lg ${currentTheme === 'dark' ? 'text-gray-400' : 'text-gray-600'} nt-5`}>
           Already have an account?{' '}
           <Link href="/sign-in">
-           <Text className='text-primary'>Sign in</Text>
+           <Text className='text-primary'>Sign In</Text>
           </Link>
         </Text>
     </View>

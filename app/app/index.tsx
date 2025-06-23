@@ -21,26 +21,26 @@ type Feature = {
 
 const features: Feature[] = [
   {
-    icon:'🍪',
+    icon: '🍪',
     text: 'Recolor Images',
-    description: 'Choose Arbitary Color'
+    description: 'Choose Arbitrary Color'
   },
   {
-    icon:'📷',
+    icon: '📷',
     text: 'Restore Photos',
     description: 'In Excellent Quality'
   },
   {
-    icon:'✨',
+    icon: '✨',
     text: 'Generative Fill',
     description: 'Smart Expand'
   },
   {
-    icon:'✂️',
+    icon: '✂️',
     text: 'Remove Objects',
     description: 'Clean Removal'
   }
-]
+];
 
 
 const WelcomeScreen = () => {
@@ -52,8 +52,7 @@ const WelcomeScreen = () => {
         <Image source={require('../assets/images/landing.png')} className="w-[120px] h-[120px] mb-6" resizeMode="contain" />
         <Text className={`text-[28px] font-bold text-center mb-3 ${currentTheme ==='dark' ? 'text-white' : 'text-gray-900'}`}>Imaginary</Text>
         <Text className={`text-base text-center mb-10 leading-6 ${currentTheme === 'dark' ? 'text-gray-300' : 'text-gray-600'}`}>
-          Transform your images with powerful AI tools - 
-          Recolor, restore, fill, and remove objects with just a few taps
+          Transform your images with powerful AI tools Recolor, restore, fill, and remove objects with just a few taps
         </Text>
         <View className="flex-row flex-wrap justify-between mb-[30px] px-[5px]">
           {features.map((feature, index) =>(

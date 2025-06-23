@@ -19,7 +19,10 @@ return [
 
     'allowed_methods' => ['*'],
 
-    'allowed_origins' => [env('FRONTEND_URL', 'http://localhost:3000')],
+    'allowed_origins' => [env('FRONTEND_URL', 'http://localhost:3000'),
+      'http://192.168.100.16:8000',  // Add your React Native app's URL
+       'exp://192.168.100.16:8000',   // Add Expo URL if you're using Expo
+    ],
 
     'allowed_origins_patterns' => [],
 

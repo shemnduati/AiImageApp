@@ -10,7 +10,7 @@ import axios from 'axios';
 import axiosInstance from '@/config/axiosConfig';
 
 interface User {
-    id: number,
+    id: number;
     name: string;
     email: string;
     email_verified_at: string | null;
@@ -106,7 +106,7 @@ export function SessionProvider({ children }: PropsWithChildren){
         }
     })() : null;
 
-    // Function to update user data with proper JSON stringfication
+    // Function to update user data with proper JSON stringification
     const handleUpdateUser = async (userData: any) =>{
         try {
             const userString = JSON.stringify(userData);
