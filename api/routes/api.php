@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\ImageController;
+use App\Http\Controllers\PaymentController;
 
 Route::middleware("guest")->group(
     callback: function (): void {
@@ -47,4 +48,8 @@ Route::middleware(['auth:sanctum'])
         ImageController::class,
         'deleteOperation'
     ]);
+
+    // Payment routes
+    Route::post('payment/create-payment-intent', [PaymentController::class, 'createPaymentIntent']);
+        Route::post('payment/handel-payment-success', [PaymentController::class, 'handlePay mentSuccess']);
 });

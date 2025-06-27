@@ -94,7 +94,8 @@ export default function FullscreenViewer({
                     </View>
                     {/* Save button */}
                     {onSave && processedImage && currentIndex === 1 && (
-                        <TouchableOpacity
+                        <View className="absolute bottom-20 right-4">
+                             <TouchableOpacity
                             className="bg-primary rounded-full p-3 mb-3"
                             onPress={() => onSave(processedImage)}
                             disabled={savingImage}
@@ -105,6 +106,7 @@ export default function FullscreenViewer({
                                 <MaterialIcons name="save-alt" size={24} color="#fff" />
                             )}
                         </TouchableOpacity>
+                        </View>
                     )}
                 </View>
             </GestureHandlerRootView>

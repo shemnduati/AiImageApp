@@ -98,7 +98,7 @@ export default function OperationDetail() {
                     onPress: async () => {
                         try {
                             setLoading(true);
-                            await axiosInstance.delete('/api/image/operation/${id}');
+                            await axiosInstance.delete(`/api/image/operation/${id}`);
                             Alert.alert('Success', 'Operation deleted successfully');
                             router.back();
                         } catch (error) {

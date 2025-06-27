@@ -1,12 +1,75 @@
-import { View, Text } from 'react-native'
-import React from 'react'
+import { View, ActivityIndicator, Text } from 'react-native';
+import { StripeProvider } from '@stripe/stripe-react-native';
+import { STRIPE_PUBLISHABLE_KEY } from '@/config/env';
+import  CreditPackageCard  from '@/components/app/CreditPackageCard';
+import { CreditPackage } from '@/components/app/CreditPackageCard';
+import { useThemeColors } from '@/hooks/useThemeColors';
+import { MaterialIcons } from '@expo/vector-icons';
+import { useSession } from '@/context/AuthContext';
 
-const credits = () => {
+const CREDIT_PACKAGES: Omit<CreditPackage, 'gradient'>[] = [
+  {
+    credits: 10,
+    price: 2,
+    popular: false,
+  },
+  {
+    credits: 50,
+    price: 10,
+    popular: true,
+  },
+  {
+    credits: 200,
+    price: 30,
+    popular: false,
+  },
+];
+
+// Separate component for each credit package content
+function CreditsContent() {
+  const { user, isLoading } = useSession();
+  const colors = useThemeColors();
+
   return (
-    <View>
-      <Text>credits</Text>
+    <View className='flex-1 bg-white dark:bg-gray-900 p-4'>
+      <View className='items-center mb-8'>
+        <MaterialIcons name='stars' size={60} color={colors.primary} />
+        <Text className='text-4xl font-bold text-gray-800 dark:text-white my-2'>{user?.credits || 0}</Text>
+        <Text className='text-lg text-gray-600 dark:text-gray-300'>Available Credits</Text>
+      </View>
+      <Text className='text-xl font-bold dark:text-white text-gray-800 mb-4'>Get More Credits</Text>
+      <View>
+        {CREDIT_PACKAGES.map((pkg) => {
+          // Create a complete package with theme-aware gradient
+          const completePackage: CreditPackage = {
+             ...pkg,
+             gradient: [colors.card, colors.surface] as 
+             readonly [string, string, ...string[]],
+           };
+        return (
+        <CreditPackageCard
+          key={completePackage.credits}
+          package={completePackage}
+          onPress={() => { }}
+          disabled={isLoading}
+        />
+        );
+        })}
+      </View>
+      {isLoading && (
+        <View className='absolute inset-0 flex justify-center items-center bg-black/30 dark:bg-black/50'>
+          
+        </View>
+       )}
     </View>
-  )
+  );
 }
 
-export default credits
+// Main Screen components
+export default function Credits() {
+  return (
+    <StripeProvider publishableKey={STRIPE_PUBLISHABLE_KEY}>
+      <CreditsContent />
+    </StripeProvider>
+  );
+}
