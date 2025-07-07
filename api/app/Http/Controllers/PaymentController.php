@@ -29,7 +29,7 @@ class PaymentController extends Controller
             // Get or create  customer
             $customer = Customer::create([
                 'email' => auth()->user()->email,
-                'name' => auth()->name,
+                'name' => auth()->user()->name,
             ]);
 
             // Create ephemeral key for the customer
@@ -61,7 +61,7 @@ class PaymentController extends Controller
             ]);
 
             return response()->json([
-                'PaymentIntent' => $paymentIntent->client_secret,
+                'paymentIntent' => $paymentIntent->client_secret,
                 'ephemeralKey' => $ephemeralKey->secret,
                 'customer' => $customer->id,
                 'publishableKey' => config('service.stripe.key'),
@@ -88,10 +88,12 @@ class PaymentController extends Controller
             $transaction = Transaction::where('stripe_payment_intent_id', $paymentIntentId)
                 ->where('status', 'pending')
                 ->first();
+
+          
             
             if ($transaction) {
                 //  Update transaction
-                $transaction->status = 'completed',
+                $transaction->status = 'completed';
                 $transaction->save();
                 
                 //  Add credits to user

@@ -35,6 +35,9 @@ Route::middleware(['auth:sanctum'])
     });
 
     Route::post('/image/fill', [ImageController::class, 'fill']);
+    Route::post('/image/restore', [ImageController::class, 'restore']);
+    Route::post('/image/recolor', [ImageController::class, 'recolor']);
+    Route::post('/image/remove', [ImageController::class, 'remove']);
 
     Route::get('/image/latest-operations', [
         ImageController::class,
@@ -51,5 +54,5 @@ Route::middleware(['auth:sanctum'])
 
     // Payment routes
     Route::post('payment/create-payment-intent', [PaymentController::class, 'createPaymentIntent']);
-        Route::post('payment/handel-payment-success', [PaymentController::class, 'handlePay mentSuccess']);
+        Route::post('payment/handel-payment-success', [PaymentController::class, 'handlePaymentSuccess']);
 });

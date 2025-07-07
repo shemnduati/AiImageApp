@@ -40,6 +40,7 @@ const AppLayout = () => {
           <Stack.Screen name="generative-fill" options={{ headerTitle: "Generative Fill" }} />
           <Stack.Screen name="recolor" options={{ headerTitle: "Recolor Images" }} />
           <Stack.Screen name="remove" options={{ headerTitle: "Remove Objects" }} />
+          <Stack.Screen name="credits" options={{ headerTitle: "Credits" }} />
       </Stack> 
   )
 }
